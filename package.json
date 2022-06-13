@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/albi-mema/node-test-project#readme",
   "dependencies": {
+    "lodash": "^4.17.21",
     "nodemon": "^2.0.16"
   }
 }
