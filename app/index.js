@@ -7,7 +7,7 @@ const filename = './app/numbers.json'
 
 var content = JSON.parse(fs.readFileSync(filename,'utf8')).numbers
 
-let concated   = concat.concat(content,[16,17,18])
+let concated   = concat.concat(content,[16,17,18,19])
 let calculated = calc.sum(content)
 
 
