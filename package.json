@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/albi-mema/node-test-project/issues"
   },
-  "homepage": "https://github.com/albi-mema/node-test-project#readme"
+  "homepage": "https://github.com/albi-mema/node-test-project#readme",
+  "dependencies": {
+    "nodemon": "^2.0.16"
+  }
 }
