@@ -1,36 +1,47 @@
-const concat     = require("./concat");
-const calc       = require("./calc");
-const fs         = require("fs");
-const prime      = require("./primes");
-const _          = require("lodash");
-const palindrome = require("./palindrome")
+const concat = require("./concat");
+const calc = require("./calc");
+const fs = require("fs");
+const prime = require("./primes");
+const _ = require("lodash");
+const palindrome = require("./palindrome");
 
-let filename   = "./app/numbers.json";
+const filename = "./app/numbers.json";
 
-let content = JSON.parse(fs.readFileSync(filename, "utf8")).numbers;
+numbers = [15,16,17];
 
-
-let concated = concat.concat(content, [16, 17, 18, 19]);
-let calculated = calc.sum(content);
-let word = "hello"
-let reversed  = palindrome.palindrome(word)
-
-
-let limit = 100;
-let primNumbers = prime.primes_up_to(limit);
-
-let sumOfPrimes = _.reduce(primNumbers, (x, y) => x + y);
-
-function displayIsPalindrome(word){
-    if(reversed){
-        return(`The word ${word} is a palindrome`)
-    }else{
-        return(`The word ${word} is not a palindrome`)
+const readFileAndAddRezult = async () => {
+    try {
+        let data = await fs.promises.readFile(filename,'utf-8');
+        let result = JSON.parse(data).numbers
+        const concated = concat.concat(result, numbers);
+        console.log(`The rezulting list is ${concated}.`);
+    } catch (error) {
+        console.log("Could not read file.")
     }
 }
 
-console.log(`The rezulting list is ${concated}.`);
+
+
+const word1 = "hello";
+const word2 = "1001";
+
+function displayIsPalindrome(word) {
+    if (palindrome.palindrome(word)) {
+        return `The word ${word} is a palindrome`;
+    } else {
+        return `The word ${word} is not a palindrome`;
+    }
+}
+
+const limit = 100;
+const primNumbers = prime.primes_up_to(limit);
+const sumOfPrimes = _.reduce(primNumbers, (x, y) => x + y);
+
+const calculated = calc.sum(numbers);
+
+readFileAndAddRezult()
 console.log(`The sum is ${calculated}.`);
 console.log(`The prime numbers up to ${limit} are ${primNumbers}.`);
 console.log(`The sum of the first ${limit} prime numbers is ${sumOfPrimes}.`);
-console.log(displayIsPalindrome(word))
+console.log(displayIsPalindrome(word1));
+console.log(displayIsPalindrome(word2));

@@ -10,5 +10,6 @@ const palindrome = (word) => word ==
 
 
 
+
 module.exports.palindrome = palindrome
 
